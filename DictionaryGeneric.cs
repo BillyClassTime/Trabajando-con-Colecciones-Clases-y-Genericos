@@ -1,6 +1,7 @@
 using System;
 using static System.Console;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _11Collection
 {
@@ -37,6 +38,27 @@ namespace _11Collection
             }
             // You can also use the indexer to change the value associated with a key.
             coffeeCodes["IC"] = "Instant Coffee";
+            WriteLine("Recorrido con el foreach sin condiciones LINQ");
+            foreach (var coffeeCode in coffeeCodes)
+            {
+                WriteLine($"Key:{coffeeCode.Key} Value{coffeeCode.Value}");
+            }
+            WriteLine("Muestra solo Romano y Mocha del diccionario");
+            var resultado = from string coffee in coffeeCodes.Keys
+                            where coffeeCodes[coffee].Contains("Mocha") || coffeeCodes[coffee].Contains("Romano")
+                            select coffee;
+            foreach (var coffee in resultado)
+            {
+                WriteLine($"Key:{coffee},Value:{coffeeCodes[coffee]}");
+            }
+            WriteLine("Muestra solo Romano y Mocha del diccionario, utilizando dynamic");
+            var resultado2 = from dynamic coffee in coffeeCodes
+                            where coffee.Value.Contains("Mocha") || coffee.Value.Contains("Romano")
+                            select coffee;
+            foreach (var coffee in resultado2)
+            {
+                WriteLine($"Key:{coffee.Key},Value:{coffee.Value}");
+            }
         }
     }
 }

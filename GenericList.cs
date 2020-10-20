@@ -109,6 +109,7 @@ namespace _11Collection
             return new EmployeeEnumerator(name);
         }
 
+        // Implementa un Metodo tipo IEnumerator privado llamado en la linea 120
         private IEnumerator GetEnumerator1()
         {
             return this.GetEnumerator();
@@ -145,6 +146,7 @@ namespace _11Collection
         private bool disposedValue = false;
         public void Dispose()
         {
+            //name = null;
             Dispose(true);
             GC.SuppressFinalize(this);
         }
@@ -173,7 +175,7 @@ namespace _11Collection
         {
             name = null;
         }
-        ~EmployeeEnumerator()
+        ~EmployeeEnumerator() //Desctructor
         {
             Dispose(false);
         }
@@ -183,5 +185,39 @@ namespace _11Collection
     {
         public string Name { get ; set ; }
         public int ID { get; set ; }
+    }
+
+    public class EmployeeOfContinent : IEnumerable<string>
+    {
+        public IEnumerator<string> GetEnumerator() {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class EmployeeEnumeratorII : IEnumerator<string>
+    {
+        public string Current => throw new NotImplementedException();
+
+        object IEnumerator.Current => throw new NotImplementedException();
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

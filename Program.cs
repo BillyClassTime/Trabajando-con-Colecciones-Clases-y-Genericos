@@ -9,15 +9,17 @@ namespace _11Collection
     {
         static void Main()
         {
-            //new WorkingWithCollections().UsingCustomCollection();
+            //new WorkingWithCollections().UsingCustomCollection(); 
             //MetodosGenericos.TestSwap();
-            //new WorkingWithCollections().UsingCollection();
-            new WorkingWithCollections().UsingMethodsGenerics();
+            new WorkingWithCollections().UsingCollection();
+            //new WorkingWithCollections().UsingMethodsGenerics();
             //Entendiendo Yield
             //new YieldClass().Consumer();
-            //new WorkingWithCollections().UsingMethodsGenerics();
+            //new ListT().usingListT();
             //new UsingLinkedListTClass().UsingLinkedListT();
             //new UsingQueueT().UsingQueueTList();
+            //new DictionaryGeneric().UsingDictionaryGeneric();
+            //new WorkingWithCollections().UsingCustomCollectionConIEnumerable();
         }
         public void UsingCollection()
         {
@@ -150,20 +152,22 @@ namespace _11Collection
             empleadoList.AddHead(new Employee("JuanJo", 29));
             empleadoList.AddHead(new Employee("JVicente", 25));
 
+
+
             foreach (var empleado in empleadoList)
             {
                 WriteLine($"{empleado.Name}, {empleado.ID}");
             }
             string firstEmpleado;
-            string empleadoABuscar=default;    
+            string empleadoABuscar = default;
             string salir = "*";
 
             do
             {
                 try
                 {
-                    lecturaTeclado($"Entre el empleado a buscar y pulse ENTER (Salir con {salir}):>",out empleadoABuscar);
-                    if(!empleadoABuscar.StartsWith("*"))
+                    lecturaTeclado($"Entre el empleado a buscar y pulse ENTER (Salir con {salir}):>", out empleadoABuscar);
+                    if (!empleadoABuscar.StartsWith("*"))
                     {
                         firstEmpleado = empleadoList.FindFirstOccurrence(empleadoABuscar).Name;
                         WriteLine($"Empleado encontrado en la lista:{firstEmpleado}");
@@ -171,23 +175,23 @@ namespace _11Collection
                 }
                 catch (NullReferenceException e)
                 {
-                    WriteLine($"El empleado no existe:\"{e.ToString().Substring(0,29)}\"");
+                    WriteLine($"El empleado no existe:\"{e.ToString().Substring(0, 29)}\"");
                 }
-            } while (true && empleadoABuscar!=salir);
+            } while (true && empleadoABuscar != salir);
         }
         public void lecturaTeclado(string mensaje, out string lectura)
         {
             Write(mensaje);
             lectura = ReadLine();
         }
- 
+
         public void UsingMethodsGenerics()
         {
             Animal vacaGenerica = new Animal(); //("No Country");
             vacaGenerica.Name = "vaca Generica";
             Cow vacaEstructurada = new Cow("Estructurada");
             //vacaEstructurada.Name = "Holstein";
-            CowHolstein vacaHolstein = new CowHolstein("Marina","No Country");
+            CowHolstein vacaHolstein = new CowHolstein("Marina", "No Country");
             Dog germanShepherd = new Dog("Germany");
             germanShepherd.Name = "Rex";
             Specie otherKind = new Specie();
@@ -198,6 +202,50 @@ namespace _11Collection
             Animal.Save<CowHolstein>(vacaHolstein);
             Animal.Save<Specie>(otherKind);
 
+        }
+
+        public void UsingCustomCollectionConIEnumerable()
+        {
+            GenericList<EmployeeOfYear> empleadoList = new GenericList<EmployeeOfYear>();
+
+            EmployeeOfYear employee = new EmployeeOfYear("Javier", 23);
+            empleadoList.AddHead(employee);
+            empleadoList.AddHead(new EmployeeOfYear("Carlos", 25));
+            empleadoList.AddHead(new EmployeeOfYear("JuanJo", 29));
+            empleadoList.AddHead(new EmployeeOfYear("JVicente", 25));
+
+            foreach (var empleado in empleadoList)
+            {
+                WriteLine($"{empleado.Name}, {empleado.ID}");
+            }
+            string firstEmpleado;
+            string empleadoABuscar = default;
+            string salir = "*";
+
+            do
+            {
+                try
+                {
+                    lecturaTeclado($"Entre el empleado a buscar y pulse ENTER (Salir con {salir}):>", out empleadoABuscar);
+                    if (!empleadoABuscar.StartsWith("*"))
+                    {
+                        firstEmpleado = empleadoList.FindFirstOccurrence(empleadoABuscar).Name;
+                        WriteLine($"Empleado encontrado en la lista:{firstEmpleado}");
+                    }
+                }
+                catch (NullReferenceException e)
+                {
+                    WriteLine($"El empleado no existe:\"{e.ToString().Substring(0, 29)}\"");
+                }
+            } while (true && empleadoABuscar != salir);
+        }
+    }
+
+    public class ExampleOfImplementingIDisposable : IDisposable
+    {
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
