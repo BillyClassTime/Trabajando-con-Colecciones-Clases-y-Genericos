@@ -30,7 +30,7 @@ var myDictionary = new Dictionary<string, Car>
 ```
 GenericList<Employee> empleadoList = new GenericList<Employee>();
 ``` 
-`
+
 ### Usando métodos genéricos
 
 ```
@@ -96,7 +96,7 @@ Restricciones de tipos en la clase
 public class GenericList<T> where T : IEmployee
 ```
 ```
-  public IEnumerator<T> GetEnumerator()
+public IEnumerator<T> GetEnumerator()
 ```
 #### Define la clase Employee a partir de la implementación de la interface IEmployee
 
@@ -112,7 +112,7 @@ public class EmployeeOfYear : IEmployee, IEnumerable<string>
 ```
 public class EmployeeEnumerator : IEnumerator<string>
 ```
-### Explicacion Pregunta 11 Batería de preguntas
+### Explicación Pregunta 11 Batería de preguntas
 
 Contenido en el fichero MetodosGenéricos.cs
 
@@ -131,7 +131,7 @@ string[] words =
     { "the", "fox", "jumps", "over", "the", "dog" };
 LinkedList<string> sentence = new LinkedList<string>(words);
 ```
-### Usando Listas generícas de System.Collection:Generic
+### Usando Listas generícas de System.Collection.Generic
 
 List<T>
 
