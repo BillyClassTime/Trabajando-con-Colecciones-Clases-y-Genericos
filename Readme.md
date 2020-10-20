@@ -59,7 +59,7 @@ foreach (var empleado in empleadoList)
 Contenido en el fichero DictionaryGenerics
 
 ```
- var coffeeCodes = new Dictionary<String, String>();
+var coffeeCodes = new Dictionary<String, String>();
 ```
 ```
 // Add some entries to the dictionary.
@@ -163,4 +163,16 @@ numbers.Enqueue("five");
 ```
 WriteLine("\nDequeuing '{0}'", numbers.Dequeue());
 ```
-
+### Ejemplo de Yield
+Definición de Yield en el fichero YieldUnderstanding.cs
+```
+public IEnumerable<int> Integers()
+{
+    yield return 1;
+    yield return 2;
+    yield return 4;
+    yield return 8;
+    yield return 16;
+    yield return 16777216;
+}
+```
