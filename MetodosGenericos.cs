@@ -13,9 +13,9 @@ namespace _11Collection
             Swap<int>(ref a, ref b);
             WriteLine(a + " " + b);
 
-            string pAmerica="Honduras";
+            string pAmerica = "Honduras";
             string pEuropa = "Portugal";
-            Swap<string>(ref pAmerica, ref pEuropa);   
+            Swap<string>(ref pAmerica, ref pEuropa);
             WriteLine($"pAmerica:{pAmerica},pEuropa:{pEuropa}");
         }
 
@@ -33,20 +33,21 @@ namespace _11Collection
         public string Name { get; set; }
         private string countryOfOrigin;
         //public Animal() => Name = "Generic Animal";  // Si la condicion es new()
-        public Animal(string CountryOfOrigin) => CountryOfOrigin = countryOfOrigin;
+        //public Animal(string CountryOfOrigin) => CountryOfOrigin = countryOfOrigin;
 
         // new()
         // Animal, new()
         // struct
         // IAnimal
-        public static void Save<T>(T target) where T : new()
+        public static void Save<T>(T target) where T : Animal, new()
         {
-            Animal animal = new Animal("No Country");
-            IAnimal Ianimal = new Animal("No Country");
+            Animal animal = new Animal(); //"No Country");
+            IAnimal Ianimal = new Animal(); //("No Country");
             if (target is Animal)
             {
-                animal = (Animal)(object)target;
-                WriteLine(animal.Name);
+                //animal = (Animal)(object)target;
+                //WriteLine(animal.Name);
+                WriteLine(target.Name);
             }
             else if (target is IAnimal)
             {
@@ -67,6 +68,8 @@ namespace _11Collection
     {
         public string Name { get; set; }
         public Cow(string name) => Name = name;
+
+        //public Cow() {}
     }
 
     public class CowHolstein : Animal
@@ -74,25 +77,38 @@ namespace _11Collection
         //public string Name { get; set; }
 
         public string CountryOfOrigin { get; set; }
-        public CowHolstein(string name, string CountryOfOrigin) : base(CountryOfOrigin)
+        //public CowHolstein(string name, string CountryOfOrigin) : base(CountryOfOrigin)
+        public CowHolstein(string name, string CountryOfOrigin)
         {
             Name = name;
             //CountryOfOrigin = "No country";
         }
+
+        public CowHolstein() { }
     }
 
-    public class Dog : Animal
+    public class Dog : IAnimal
     {
-        public Dog(string CountryOfOrigin) : base(CountryOfOrigin) { }
-
+        //public Dog(string CountryOfOrigin) : base(CountryOfOrigin) { }
+        public Dog(string CountryOfOrigin) => CountryOfOrigin = this.CountryOfOrigin;
+        public Dog() { }
         public string CountryOfOrigin = "No Country";
+
+        public string Name { get; set; }
     }
 
-    public class Specie
+    public class Specie : Animal
+    {
+       /* public Specie(string name)
+        {
+            this.Name = name;
+        }*/
+    }
+
+    public class AnimalOfOtherSpecies
     {
 
     }
-
     public interface IAnimal
     {
         string Name { get; set; }

@@ -10,8 +10,9 @@ namespace _11Collection
         static void Main()
         {
             //new WorkingWithCollections().UsingCustomCollection();
-            MetodosGenericos.TestSwap();
+            //MetodosGenericos.TestSwap();
             //new WorkingWithCollections().UsingCollection();
+            new WorkingWithCollections().UsingMethodsGenerics();
             //Entendiendo Yield
             //new YieldClass().Consumer();
             //new WorkingWithCollections().UsingMethodsGenerics();
@@ -182,7 +183,7 @@ namespace _11Collection
  
         public void UsingMethodsGenerics()
         {
-            Animal vacaGenerica = new Animal("No Country");
+            Animal vacaGenerica = new Animal(); //("No Country");
             vacaGenerica.Name = "vaca Generica";
             Cow vacaEstructurada = new Cow("Estructurada");
             //vacaEstructurada.Name = "Holstein";
@@ -190,9 +191,10 @@ namespace _11Collection
             Dog germanShepherd = new Dog("Germany");
             germanShepherd.Name = "Rex";
             Specie otherKind = new Specie();
+            otherKind.Name = "Marth Bug";
             Animal.Save<Animal>(vacaGenerica);
-            Animal.Save<Cow>(vacaEstructurada);
-            Animal.Save<Dog>(germanShepherd);
+            //Animal.Save<Cow>(vacaEstructurada);
+            //Animal.Save<Dog>(germanShepherd);
             Animal.Save<CowHolstein>(vacaHolstein);
             Animal.Save<Specie>(otherKind);
 
